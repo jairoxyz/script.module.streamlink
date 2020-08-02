@@ -3,7 +3,7 @@
   <requires>
   
 	<!-- Leia imports -->
-    <!-- <import addon="xbmc.python" version="2.24.0"/>
+    <import addon="xbmc.python" version="2.24.0"/>
     <import addon="script.module.requests" version="2.18.4"/>
     <import addon="script.module.futures" version="2.2.0"/>
     <import addon="script.module.singledispatch" version="3.4.0.3"/>
@@ -15,17 +15,18 @@
     <import addon="script.module.isodate" version="0.6.0"/>
     <import addon="script.module.pysocks" version="1.6.8" optional="true"/>
     <import addon="script.module.pycryptodome" version="3.4.3"/>
-    <import addon="script.module.shutil_get_terminal_size" version="1.0.0"/> -->
+    <import addon="script.module.shutil_get_terminal_size" version="1.0.0"/>
 	
 	<!-- Matrix imports -->
-	<import addon="xbmc.python" version="3.0.0"/>
+	  <!-- <import addon="xbmc.python" version="3.0.0"/>
     <import addon="script.module.requests"/>
     <import addon="script.module.six"/>
     <import addon="script.module.iso3166"/>
     <import addon="script.module.iso639"/>
     <import addon="script.module.websocket"/>
     <import addon="script.module.isodate"/>
-    <import addon="script.module.pycryptodome" version="3.4.3"/>    
+    <import addon="script.module.pycryptodome" version="3.4.3"/>     -->
+
   </requires>
   <extension point="xbmc.python.module" library="resources/lib/"/>
   <extension point="xbmc.addon.metadata">
