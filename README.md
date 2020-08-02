@@ -2,7 +2,7 @@
 
 Streamlink repacked for Kodi.
 
-Installation: clone repo, change dependencies in addon.xml to the correct Kodi version and make a zip file and get dependencies from [here]. There are also prepacked zips under [there].
+Installation: clone repo, change dependencies in addon.xml to the correct Kodi version, make a zip file and get dependencies from [here]. There are also some ready to install zips under [there].
 
 
 
