@@ -9,8 +9,14 @@ import xbmc
 import xbmcvfs
 from streamlink.compat import is_py2
 
-xdg_cache = xbmc.translatePath('special://profile/addon_data/script.module.streamlink')
-temp_dir = xbmc.translatePath('special://temp')
+try:
+    xdg_cache = xbmc.translatePath('special://profile/addon_data/script.module.streamlink')
+except:
+    xdg_cache = xbmcvfs.translatePath('special://profile/addon_data/script.module.streamlink')
+try:
+    temp_dir = xbmc.translatePath('special://temp')
+except:
+    temp_dir = xbmcvfs.translatePath('special://temp')
 
 if is_py2:
     xdg_cache = xdg_cache.encode('utf-8')
