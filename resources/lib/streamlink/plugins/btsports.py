@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 
 
 class BTSports(Plugin):
-    url_re = re.compile(r"https?://sport.bt.com")
+    url_re = re.compile(r"https?://sport\.bt\.com")
 
     arguments = PluginArguments(
         PluginArgument(
@@ -111,6 +111,7 @@ class BTSports(Plugin):
         res = self.session.http.get(self.api_url, params=d, headers={"Accept": "application/json"})
         return self.session.http.json(res)
 
+    @Plugin.broken(2946)
     def _get_streams(self):
         if self.options.get("email") and self.options.get("password"):
             if self.login(self.options.get("email"), self.options.get("password")):

@@ -1,5 +1,166 @@
 # Changelog
 
+## streamlink 1.7.0 (2020-10-18)
+
+Release highlights:
+
+- Added: new plugins for micous.com, tv999.bg and cbsnews.com
+- Added: new embedded ad detection for Twitch streams ([#3213](https://github.com/streamlink/streamlink/pull/3213))
+- Fixed: a few broken plugins and minor plugin issues (see changelog down below)
+- Fixed: arguments in config files were read too late before taking effect ([#3255](https://github.com/streamlink/streamlink/pull/3255))
+- Fixed: Arte plugin returning too many streams and overriding primary ones ([#3228](https://github.com/streamlink/streamlink/pull/3228))
+- Fixed: Twitch plugin error when stream metadata API response is empty ([#3223](https://github.com/streamlink/streamlink/pull/3223))
+- Fixed: Zattoo login issues ([#3202](https://github.com/streamlink/streamlink/pull/3202))
+- Changed: plugin request and submission guidelines ([#3244](https://github.com/streamlink/streamlink/pull/3244))
+- Changed: refactored and cleaned up Twitch plugin ([#3227](https://github.com/streamlink/streamlink/pull/3227))
+- Removed: `platform=_` stream token request parameter from Twitch plugin (again) ([#3220](https://github.com/streamlink/streamlink/pull/3220))
+- Removed: plugins for itvplayer, aljazeeraen, srgssr and dingittv
+
+
+```text
+Alexis Murzeau <amubtdx@gmail.com> (1):
+      docs: use recommonmark as an extension
+
+Billy2011 <kschmidt2007@googlemail.com> (3):
+      plugins.zattoo: use hello api v2 for zattoo.com (#3202)
+      plugins.dlive: rewrite plugin (#3239)
+      utils.l10n: use DEFAULT_LANGUAGE_CODE if locale lookup fails (#3055)
+
+Forrest <gravyboat@users.noreply.github.com> (1):
+      plugins.itvplayer: remove due to DRM (#2934)
+
+Ian Cameron <1661072+mkbloke@users.noreply.github.com> (8):
+      plugins.mico: new plugin for http://www.micous.com/ (#3188)
+      plugins.cdnbg: update url_re, plugin test, plugin matrix (#3205)
+      plugins.tv999: new plugin for http://tv999.bg/live.html (#3199)
+      plugins.aljazeeraen: plugin removal (#3207)
+      plugins.srgssr: plugin removal
+      plugins.tv3cat: update URL match, test and plugin matrix
+      chore: update issue templates (#3250)
+      docs: add plugin addition/removal infos (#3249)
+
+Sebastian Meyer <mail@bastimeyer.de> (2):
+      Improve coverage reports on codecov (#3200)
+      plugins.twitch: remove platform access token param (#3220)
+
+back-to <backto@protonmail.ch> (4):
+      plugin.api.useragents: update User-Agent
+      plugins.livestream: remove AkamaiHDStream, use only secure HLSStream (#3243)
+      plugins.dingittv: removed, website is unmaintained
+      plugins: mark some plugins as broken (#3262)
+
+bastimeyer <mail@bastimeyer.de> (21):
+      ci.coverage: increase threshold of tests status
+      tests: add stream_hls mixin for testing HLSStreams
+      stream.hls_filtered: refactor tests, use mixin
+      plugins.twitch: refactor tests, use mixin
+      stream.hls: refactor reload time tests, use mixin
+      stream.hls: separate variant playlist tests
+      stream.hls: separate default and encrypted tests
+      stream.hls_playlist: implement EXT-X-DATERANGE tag
+      plugins.twitch: filter ads by EXT-X-DATERANGE tag
+      plugins.twitch: fix metadata API response handling
+      ci: add python 3.9 test runners
+      tests: fix early writer close in stream_hls mixin
+      stream.segmented: gracefully shut down thread pool
+      plugins.twitch: remove video-type distinction
+      plugins.twitch: refactor Twitch API related code
+      plugins.twitch: refactor _get_hls_streams
+      plugins.twitch: remove stream weights and clean up
+      docs: fix working tree check in deploy script
+      docs: update plugin guidelines
+      docs: add developing menu with basic setup steps
+      docs: add generic pull request template
+
+beardypig <beardypig@protonmail.com> (3):
+      plugins.cbsnews: support for live streams from CBS News (#3251)
+      plugins.artetv: only pick the first variant of the stream (#3228)
+      cli: make config based args available during early setup (#3255)
+```
+
+
+## streamlink 1.6.0 (2020-09-22)
+
+Release highlights:
+
+- Fixed: lots of broken plugins and minor plugin issues (see changelog down below)
+- Fixed: embedded ads on Twitch with an ads workaround, removing pre-roll and mid-stream ads ([#3173](https://github.com/streamlink/streamlink/pull/3173))
+- Fixed: read timeout error when filtering out HLS segments ([#3187](https://github.com/streamlink/streamlink/pull/3187))
+- Fixed: twitch plugin logging incorrect low-latency status when pre-roll ads exist ([#3169](https://github.com/streamlink/streamlink/pull/3169))
+- Fixed: crunchyroll auth logic ([#3150](https://github.com/streamlink/streamlink/pull/3150))
+- Added: the `--hls-playlist-reload-time` parameter for customizing HLS playlist reload times ([#2925](https://github.com/streamlink/streamlink/pull/2925))
+- Added: `python -m streamlink` invocation style support ([#3174](https://github.com/streamlink/streamlink/pull/3174))
+- Added: plugin for mrt.com.mk ([#3097](https://github.com/streamlink/streamlink/pull/3097))
+- Changed: yupptv plugin and replaced email+pass with id+token authentication ([#3116](https://github.com/streamlink/streamlink/pull/3116))
+- Removed: plugins for vaughnlive, pandatv, douyutv, cybergame, europaplus and startv
+
+
+```text
+Ian Cameron <1661072+mkbloke@users.noreply.github.com> (11):
+      docs: update turkuvaz plugin matrix entry (#3114)
+      docs: Add reuters.com for reuters plugin entry in plugin matrix (#3124)
+      Fix formatting for reuters plugin entry
+      plugins.huomao: fix/rewrite (#3126)
+      plugins.drdk: fix livestreams (#3115)
+      plugins.tvplayer: update regex and tests for /uk/ URLs
+      plugins.tv360: fix HLS URL regex and plugin (#3185)
+      plugins: fix unescaped literal dots in url_re entries (#3192)
+      plugins.svtplay: rewrite/fix (#3155)
+      plugins.yupptv: fix/minor rewrite (#3116)
+      plugins.ine: fix unescaped literal dots in js_re (#3196)
+
+Il Harper <afanyiyu@hotmail.com> (2):
+      Add OBS-Streamlink into thirdparty.rst
+      Apply suggestions from code review
+
+PleasantMachine9 <65126927+PleasantMachine9@users.noreply.github.com> (1):
+      support `python -m` cli invocation
+
+Sebastian Meyer <mail@bastimeyer.de> (4):
+      plugins.bloomberg: fix regex module anchor (#3131)
+      plugins.sportschau: rewrite and fix plugin (#3142)
+      plugins.raiplay: rewrite and fix plugin (#3147)
+      plugins.twitch: refactor worker, parser and tests (#3169)
+
+Tr4sK <tr4sk+github@biboum.fr> (1):
+      plugins.mrtmk: new plugin for http://play.mrt.com.mk/ (#3097)
+
+Yahya <5457202+anakaiti@users.noreply.github.com> (1):
+      docs: update reference to minimum VLC version
+
+back-to <backto@protonmail.ch> (9):
+      plugins.vaughnlive: removed
+      plugins.pandatv: removed
+      plugins.douyutv: removed
+      plugins.tv8: fix plugin with new api
+      plugins.cybergame: removed
+      plugins.europaplus: remove plugin
+      plugins.vk: remove '\' from data
+      plugins.nicolive: fix quality
+      plugins.wasd: fixed plugin (#3139)
+
+bastimeyer <mail@bastimeyer.de> (8):
+      stream.hls: customizable playlist reload times
+      plugins.twitch: platform=_ in access_token request
+      docs: fix NixOS link
+      docs: replace easy_install macOS entry with pip
+      docs: add comment regarding pip/pip3 differences
+      stream.hls_filtered: implement FilteredHLSStream
+      plugins.twitch: use FilteredHLS{Writer,Reader}
+      stream.hls_filtered: fix tests
+
+beardypig <beardypig@protonmail.com> (1):
+      plugins.crunchyroll: update auth logic
+
+derFogel <derFogel@users.noreply.github.com> (1):
+      plugins.zattoo: fix quantum tv streaming (#3108)
+
+hymer-up <34783904+hymer-up@users.noreply.github.com> (2):
+      plugins.startv: remove plugin (#3163)
+      plugins.dogus: add startv URL (#3161)
+```
+
+
 ## streamlink 1.5.0 (2020-07-07)
 
 A minor release with fixes for `pycountry==20.7.3` ([#3057](https://github.com/streamlink/streamlink/pull/3057)) and a few plugin additions and removals.

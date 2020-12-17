@@ -4,6 +4,15 @@ import shutil
 import tempfile
 from time import time, mktime
 
+from .compat import is_win32
+
+if is_win32:
+    xdg_cache = os.environ.get("APPDATA", os.path.expanduser("~"))
+else:
+    xdg_cache = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
+
+cache_dir = os.path.join(xdg_cache, "streamlink")
+
 
 import xbmc
 import xbmcvfs
@@ -29,7 +38,6 @@ if not xbmcvfs.exists(cache_dir):
     xbmcvfs.mkdirs(cache_dir)
 if not xbmcvfs.exists(temp_streamlink):
     xbmcvfs.mkdirs(temp_streamlink)
-
 
 
 class Cache(object):
@@ -66,7 +74,7 @@ class Cache(object):
         return len(pruned) > 0
 
     def _save(self):
-        fd, tempname = tempfile.mkstemp()
+        fd, tempname = tempfile.mkstemp(dir=temp_streamlink)
         fd = os.fdopen(fd, "w")
         json.dump(self._cache, fd, indent=2, separators=(",", ": "))
         fd.close()
