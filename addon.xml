@@ -11,7 +11,7 @@
     <import addon="script.module.iso3166" version="0.8"/>
     <import addon="script.module.iso639" version="0.4.5"/>
     <import addon="script.module.shutil_which" version="3.5.1"/>
-    <import addon="script.module.websocket" version="0.47.0"/>
+    <import addon="script.module.websocket" version="0.57.0"/>
     <import addon="script.module.isodate" version="0.6.0"/>
     <import addon="script.module.pysocks" version="1.6.8" optional="true"/>
     <import addon="script.module.pycryptodome" version="3.4.3"/>
