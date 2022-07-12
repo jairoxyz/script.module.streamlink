@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.streamlink" name="Streamlink Library" version="1.7.3" provider-name="jairox">
+<addon id="script.module.streamlink" name="Streamlink Library" version="1.7.4" provider-name="jairox">
   <requires>
   
 	<!-- Leia imports -->
